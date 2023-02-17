@@ -1,160 +1,15 @@
-// Array of special characters to be included in password
-var specialCharacters = [
-  '@',
-  '%',
-  '+',
-  '\\',
-  '/',
-  "'",
-  '!',
-  '#',
-  '$',
-  '^',
-  '?',
-  ':',
-  ',',
-  ')',
-  '(',
-  '}',
-  '{',
-  ']',
-  '[',
-  '~',
-  '-',
-  '_',
-  '.'
-];
+// array containing possible tank abilites
+let tankAbilities = ["Shield","Steel Armor", "Rapid Regen", "Absorb", "Metallic", "Rock Solid", "Enlarge","Spikes","Elastic","Rhino",
+"Muscle Mass"]
 
-// Array of numeric characters to be included in password
-var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
-// Array of lowercase characters to be included in password
-var lowerCasedCharacters = [
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
-  'm',
-  'n',
-  'o',
-  'p',
-  'q',
-  'r',
-  's',
-  't',
-  'u',
-  'v',
-  'w',
-  'x',
-  'y',
-  'z'
-];
-
-// Array of uppercase characters to be included in password
-var upperCasedCharacters = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z'
-];
-
-var characterChoiceLower;
-var characterChoiceUpper;
-var characterChoiceSpecial;
-var characterChoiceNumeric;
-var passwordLength;
+// let dpsAbilities = ["Explosive Impact", "Machine Guns", "Stardust", "Onslaught", "One More", "Third Time's the Charm", ""]
 
 // Function to prompt user for password options (X)
-function getPasswordOptions() {
+function getTankAbility() {
 
+  let tankAbility = getRandom(tankAbilities)
   
-  passwordLength = prompt("How many characters would you like your password to be? It must be at least 10, and no more than 64.")
-
-  characterChoiceLower = prompt("Great! Now, would you like LOWER CASE characters in the password? Please type 'yes' or 'no' .")
-  
-    
-    if(characterChoiceLower.toLocaleLowerCase() === "yes" ){
-      characterChoiceLower = true
-    }
-
-    else if (characterChoiceLower.toLocaleLowerCase() === 'no'){
-      characterChoiceLower = false
-    }
-
-  characterChoiceUpper = prompt("Great! Now, would you like UPPER CASE characters in the password? Please type 'yes' or 'no' .")
-    
-    if(characterChoiceUpper.toLocaleLowerCase() === "yes"){
-      characterChoiceUpper = true
-    }
-
-    else if (characterChoiceUpper.toLocaleLowerCase() === 'no'){
-      characterChoiceUpper = false
-    }
-
-
-    characterChoiceNumeric = prompt("Great! Now, would you like NUMERIC characters in the password? Please type 'yes' or 'no' .")
-    
-    if(characterChoiceNumeric.toLocaleLowerCase() === "yes"){
-      characterChoiceNumeric = true
-    }
-
-    else if (characterChoiceNumeric.toLocaleLowerCase() === 'no'){
-      characterChoiceNumeric = false
-    }
-    
-    characterChoiceSpecial = prompt("Great! Now, would you like SPECIAL characters in the password? Please type 'yes' or 'no' .")
-    
-    if(characterChoiceSpecial.toLocaleLowerCase() === "yes"){
-      characterChoiceSpecial = true
-    }
-
-    else if (characterChoiceSpecial.toLocaleLowerCase() === 'no'){
-      characterChoiceSpecial = false
-    }
-
-    if ( passwordLength >=10 && passwordLength <= 64 && typeof characterChoiceLower == "boolean" && typeof characterChoiceUpper == "boolean"
-    && typeof characterChoiceNumeric == "boolean" && typeof characterChoiceSpecial == "boolean"){
-    
-      return alert("Nice, we have everything we need!")
-    } 
-    
-     else {
-      alert("Make sure you have at least one character type selected, and the length is between 10 and 64." 
-      +" Please try generating a password again.")
-    }
-
-    
-
+  return tankAbility
   
 }
 
@@ -201,12 +56,12 @@ function generatePassword() {
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+function writeAbilities() {
+  var tankAbility = getTankAbility()
+  var abilityText = document.querySelector('#anima');
 
-  passwordText.value = password;
+  abilityText.value = "Your Anima's tank ability is " + tankAbility + "!";
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+generateBtn.addEventListener('click', writeAbilities);
