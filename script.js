@@ -2,7 +2,9 @@
 let tankAbilities = ["Shield","Steel Armor", "Rapid Regen", "Absorb", "Metallic", "Rock Solid", "Enlarge","Spikes","Elastic","Rhino",
 "Muscle Mass"]
 
-// let dpsAbilities = ["Explosive Impact", "Machine Guns", "Stardust", "Onslaught", "One More", "Third Time's the Charm", ""]
+let dpsAbilities = ["Explosive Impact", "Machine Guns", "Stardust", "Onslaught", "One More", "Third Time's the Charm", "Stomach Cannon",
+"Flamin' Hot", "Steel Claws", "Sonic Catapult", "Sub-Zero", "Hammer Hands", "Grenade Launcher", "Electric", "Death Wheel", "Bubble Bomb",
+"Magnetic", "Gravity Rush", "Arm Blade", "Whip", "Tempest", "Psycho","Eye Beam", "Darkness", "Nebula"]
 
 // Function to prompt user for password options (X)
 function getTankAbility() {
@@ -10,6 +12,14 @@ function getTankAbility() {
   let tankAbility = getRandom(tankAbilities)
   
   return tankAbility
+  
+}
+
+function getDpsAbility() {
+
+  let dpsAbility = getRandom(dpsAbilities)
+  
+  return dpsAbility
   
 }
 
@@ -58,9 +68,11 @@ var generateBtn = document.querySelector('#generate');
 // Write password to the #password input
 function writeAbilities() {
   var tankAbility = getTankAbility()
+  var dpsAbility = getDpsAbility()
   var abilityText = document.querySelector('#anima');
 
-  abilityText.value = "Your Anima's tank ability is " + tankAbility + "!";
+  abilityText.value = "Your Anima's abilities are: \n " + tankAbility + "," + "\n" +
+                      dpsAbility + "," + "\n"
 }
 
 // Add event listener to generate button
