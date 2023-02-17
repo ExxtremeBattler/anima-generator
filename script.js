@@ -2,11 +2,17 @@
 let tankAbilities = ["Shield","Steel Armor", "Rapid Regen", "Absorb", "Metallic", "Rock Solid", "Enlarge","Spikes","Elastic","Rhino",
 "Muscle Mass"]
 
+// array containing possible dps abilities
 let dpsAbilities = ["Explosive Impact", "Machine Guns", "Stardust", "Onslaught", "One More", "Third Time's the Charm", "Stomach Cannon",
 "Flamin' Hot", "Steel Claws", "Sonic Catapult", "Sub-Zero", "Hammer Hands", "Grenade Launcher", "Electric", "Death Wheel", "Bubble Bomb",
 "Magnetic", "Gravity Rush", "Arm Blade", "Whip", "Tempest", "Psycho","Eye Beam", "Darkness", "Nebula"]
 
-// Function to prompt user for password options (X)
+// array containing possible support abilities
+
+let supportAbilities = ["Phase", "Duplicate", "Midas Touch", "Slip n' Slide", "Danger Sense", "Rift", "Shadow Step", "Angel Wings",
+"Hyper Form", "Swap", "Engineer", "Rejuvenation", "Rewind", "Bard", "Time Stop", "Time Skip"]
+
+// Functions to generate abilities of each category
 function getTankAbility() {
 
   let tankAbility = getRandom(tankAbilities)
@@ -23,43 +29,20 @@ function getDpsAbility() {
   
 }
 
+function getSupportAbility() {
+
+  let supportAbility = getRandom(supportAbilities)
+  
+  return supportAbility
+  
+}
+
+
+
+
 // Function for getting a random element from an array (X)
 function getRandom(arr) {
 return arr[Math.floor(Math.random() * arr.length)]
-}
-
-// Function to generate password with user input
-function generatePassword() {
-  let randomPassword = ""; 
-  let desiredArrays = [] ; 
-
-  if (characterChoiceLower === true){
-    desiredArrays = desiredArrays.concat(lowerCasedCharacters)
-  }
-
-  if (characterChoiceNumeric === true){
-    desiredArrays = desiredArrays.concat(numericCharacters)
-  }
-
-  if (characterChoiceSpecial === true){
-    desiredArrays = desiredArrays.concat(specialCharacters)
-  }
-
-  if(characterChoiceUpper === true){
-    desiredArrays = desiredArrays.concat(upperCasedCharacters)
-  }
-
-  for (let index = 0; index < passwordLength; index++) {
-    randomPassword = randomPassword.concat(getRandom(desiredArrays))
-  }
-
-  console.log(randomPassword);
-  console.log(desiredArrays)
-  
-
-  return randomPassword;
-  
-
 }
 
 // Get references to the #generate element
@@ -69,10 +52,12 @@ var generateBtn = document.querySelector('#generate');
 function writeAbilities() {
   var tankAbility = getTankAbility()
   var dpsAbility = getDpsAbility()
+  var supportAbility = getSupportAbility()
   var abilityText = document.querySelector('#anima');
 
   abilityText.value = "Your Anima's abilities are: \n " + tankAbility + "," + "\n" +
-                      dpsAbility + "," + "\n"
+                      dpsAbility + "," + "\n" +
+                      " and " + supportAbility + "!"
 }
 
 // Add event listener to generate button
